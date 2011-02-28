@@ -11,7 +11,6 @@ class CountryFieldMixin(object):
     """
 
     def __init__( self, **kwargs ):
-        kwargs.setdefault( 'verbose_name', _( 'countries' ) )
         if kwargs.pop( 'required', None ) == False:
             kwargs[ 'blank' ] = True
             kwargs[ 'null' ] = True
@@ -23,11 +22,17 @@ class CountryField(CountryFieldMixin, models.ForeignKey):
     """
     A ForeignKey to select a country.
     """
-    pass
+    def __init__( self, **kwargs ):
+        kwargs.setdefault( 'verbose_name', _( 'country' ) )
+
+        super(CountryField, self ).__init__(**kwargs)
 
 
 class CountriesField(CountryFieldMixin, models.ManyToManyField):
     """
     A ManyToMany field to select multiple countries.
     """
+    def __init__( self, **kwargs ):
+        kwargs.setdefault( 'verbose_name', _( 'countries' ) )
 
+        super(CountriesField, self ).__init__(**kwargs)
