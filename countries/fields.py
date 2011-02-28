@@ -11,9 +11,6 @@ class CountryFieldMixin(object):
     """
 
     def __init__( self, **kwargs ):
-        if kwargs.pop( 'required', None ) == False:
-            kwargs[ 'blank' ] = True
-            kwargs[ 'null' ] = True
         super(CountryFieldMixin, self ).__init__( 'countries.Country',
                                                  **kwargs)
 
