@@ -1,10 +1,20 @@
 from setuptools import setup, find_packages
 
+try:
+    README = open('README.rst').read()
+except:
+    README = None
+
+try:
+    VERSION = __import__('countries').__version__
+except:
+    VERSION = 0.1
+
 setup(
     name='django-countries',
-    version=__import__('countries').__version__,
+    version=VERSION,
     description='Provides various Django utilities for a complete list of world countries.',
-    long_description=open('README.rst').read(),
+    long_description=README,
     # Get more strings from http://www.python.org/pypi?:action=list_classifiers
     author='Alex Kuhl',
     author_email='',
