@@ -24,6 +24,9 @@ class CountryField(CountryFieldMixin, models.ForeignKey):
 
         super(CountryField, self ).__init__(**kwargs)
 
+    def get_internal_type(self):
+        return "ForeignKey"
+
 
 class CountriesField(CountryFieldMixin, models.ManyToManyField):
     """
@@ -33,3 +36,15 @@ class CountriesField(CountryFieldMixin, models.ManyToManyField):
         kwargs.setdefault( 'verbose_name', _( 'countries' ) )
 
         super(CountriesField, self ).__init__(**kwargs)
+
+    def get_internal_type(self):
+        return "ManyToManyField"
+
+
+# rules for South migrations tool (for version >= 0.7)
+try:
+    from south.modelsinspector import add_introspection_rules
+    add_introspection_rules([], ["^countries\.fields\.CountryField"])
+    add_introspection_rules([], ["^countries\.fields\.CountriesField"])
+except ImportError:
+    pass
