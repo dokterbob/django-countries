@@ -37,5 +37,4 @@ class Country( models.Model ):
   def __unicode__( self ):
     ''' Return the display form of the country name'''
 
-    if self.name:
-        return _(self.name)
+    return _(unicode(self.name))
