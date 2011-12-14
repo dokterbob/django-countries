@@ -11,8 +11,8 @@ class CountryFieldMixin(object):
     """
 
     def __init__( self, **kwargs ):
-        super(CountryFieldMixin, self ).__init__( 'countries.Country',
-                                                 **kwargs)
+        kwargs['to'] = kwargs.get('to', 'countries.Country')
+        super(CountryFieldMixin, self ).__init__(**kwargs)
 
 
 class CountryField(CountryFieldMixin, models.ForeignKey):
