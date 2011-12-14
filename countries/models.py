@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 
 class Country( models.Model ):
@@ -37,4 +37,5 @@ class Country( models.Model ):
   def __unicode__( self ):
     ''' Return the display form of the country name'''
 
-    return _(unicode(self.name))
+    if self.name:
+        return ugettext(self.name)
