@@ -1,3 +1,5 @@
 include README.rst
 include LICENSE.txt
-recursive-include countries/fixtures *.json
+include MANIFEST.in
+recursive-include docs *
+recursive-include countries/fixtures *
